@@ -31,7 +31,7 @@ def main(file_path, token, start_line):
 
 if __name__ == "__main__":
     FILE_PATH = 'usernames.txt'  # Path to the usernames
-    TOKEN = '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'  # Your GitHub personal access token ---> Settings ---> Dev. Settings ---> Personal Access Token
+    TOKEN = '#'  # Your GitHub personal access token ---> Settings ---> Dev. Settings ---> Personal Access Token
     START_LINE = 3101 # The line number to start from (0-indexed)
 
     main(FILE_PATH, TOKEN, START_LINE)
