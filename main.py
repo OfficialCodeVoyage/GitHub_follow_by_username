@@ -1,5 +1,6 @@
 import requests
 import time
+import os
 
 
 def read_usernames(file_path):
@@ -31,7 +32,7 @@ def main(file_path, token, start_line):
 
 if __name__ == "__main__":
     FILE_PATH = 'usernames.txt'  # Path to the usernames
-    TOKEN = '#'  # Your GitHub personal access token ---> Settings ---> Dev. Settings ---> Personal Access Token
-    START_LINE = 3101 # The line number to start from (0-indexed)
+    TOKEN = os.getenv('GITHUB_TOKEN')  # Your GitHub personal access token ---> Settings ---> Dev. Settings ---> Personal Access Token
+    START_LINE = 10223 # The line number to start from (0-indexed)
 
     main(FILE_PATH, TOKEN, START_LINE)
