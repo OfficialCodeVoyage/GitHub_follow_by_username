@@ -1,11 +1,15 @@
+import dotenv
 import requests
 from time import sleep
 import time
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Replace with your GitHub username and token
-username = "IDouble"  # The GitHub username to scrape
-token = os.getenv("github_token_for_scraping")
+username = dotenv.get("USERNAME")  # The GitHub username to scrape
+token = dotenv.get("GITHUB_TOKEN")  # The personal access token to authenticate to the GitHub API
 
 # GitHub API endpoint and headers
 api_url = f"https://api.github.com/users/{username}/following"
