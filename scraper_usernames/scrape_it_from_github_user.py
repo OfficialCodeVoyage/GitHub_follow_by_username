@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Replace with your GitHub username and token
-username = dotenv.get("USERNAME")  # The GitHub username to scrape
-token = dotenv.get("GITHUB_TOKEN")  # The personal access token to authenticate to the GitHub API
+username = dotenv.get("USERNAME")  #
+token = dotenv.get("GITHUB_TOKEN")  #
 
 # GitHub API endpoint and headers
 api_url = f"https://api.github.com/users/{username}/following"
