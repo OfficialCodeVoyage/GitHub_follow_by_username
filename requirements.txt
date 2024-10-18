@@ -1,4 +1,3 @@
 requests
-aiohttp
 python-dotenv
-aiolimiter
+ratelimit

@@ -6,10 +6,9 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 # Replace with your GitHub username and token
-username = dotenv.get("USERNAME")  #
-token = dotenv.get("GITHUB_TOKEN")  #
+username = os.getenv("USERNAME")  #
+token = os.getenv("GITHUB_TOKEN")  #
 
 # GitHub API endpoint and headers
 api_url = f"https://api.github.com/users/{username}/following"
