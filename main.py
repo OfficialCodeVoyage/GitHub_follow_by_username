@@ -7,7 +7,7 @@ import logging
 import dotenv
 import json
 from state_manager import load_state, save_state
-from ratelimit import sleep_and_retry
+from ratelimit import sleep_and_retry, limits
 import random
 import logging
 
@@ -71,7 +71,10 @@ def simple_counter():
 
 
 ### follow the users
+ONE_HOUR = 3600
+MAX_CALLS_PER_HOUR = 5000
 @sleep_and_retry
+@limits(calls=MAX_CALLS_PER_HOUR, period=ONE_HOUR)
 def follow_users(users):
 
     headers = {
@@ -93,9 +96,9 @@ def follow_users(users):
                 logging.info(f"Successfully followed {user}")
             elif response.status_code == 404:
                 logging.info(f"User {user} not found")
-            elif response.status_code == 403:
-                logging.info(f"Rate limit exceeded")
-                sleep(random.uniform(60, 90))
+            elif response.status_code == 429:
+                logging.info(f"Rate limit exceeded - Sleeping for 100 seconds")
+                sleep(100)
         except requests.exceptions.RequestException as e:
             print(f"Error occurred while following {user}: {e}")
 
