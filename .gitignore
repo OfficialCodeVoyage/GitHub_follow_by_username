@@ -1,4 +1,6 @@
 .env
 follow_users.log
-/scraper_usernames/.env
+/old/scraper_usernames/.env
 fething_new_users.ipynb
+ __pycache__/
+.idea/
