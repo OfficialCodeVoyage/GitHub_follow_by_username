@@ -1,6 +1,8 @@
 .env
 follow_users.log
 /old/scraper_usernames/.env
-fething_new_users.ipynb
+old/fething_new_users.ipynb
  __pycache__/
 .idea/
+venv/
+.gitattributes
