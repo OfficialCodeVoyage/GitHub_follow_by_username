@@ -66,7 +66,7 @@ def follow_users(users):
             write_last_followed_user(user)
             simple_counter()
             print("sleeping for 3 second")
-            sleep(2)
+            sleep(5)
             if response.status_code == 204:
                 print(f"Successfully followed {user}")
         except requests.exceptions.RequestException as e:
@@ -93,6 +93,10 @@ def main():
 
 
 if __name__ == '__main__':
+    #  I wll be running on VM 24/7, so I will have a while loop
+    while True:
         main()
-        print("Done")
+        print("Sleeping for 1 hour")
+        sleep(90)
+
 
