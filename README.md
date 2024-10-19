@@ -1,19 +1,46 @@
-# 🚀 GitHub Follow by Username
+# 🚀 GitHub Automation Follower Bot
 
 ## 🎉 Introduction
 
-`GitHub Follow by Username` is a Python script that allows you to **follow GitHub users efficiently** by reading their usernames from a file. Leveraging asynchronous programming with `asyncio` and `aiohttp`, this tool manages GitHub's API rate limits gracefully while providing robust logging and resuming capabilities.
+The GitHub Automation Follower Bot is a fully automated tool designed to streamline the process of discovering and following GitHub users based on specific criteria. The goal of this bot to follow **1 000 000** users on Github based on your criteria! 
 
-## ⭐ Features
+You have two options to run the script:
 
-- **🔄 Asynchronous Operations:** Utilizes `asyncio` and `aiohttp` for concurrent API requests, enhancing performance.
-- **⏱️ Rate Limit Handling:** Dynamically manages GitHub API rate limits by monitoring response headers and implementing backoff strategies.
-- **🔁 Resumable Execution:** Tracks the last processed username to allow resuming from where the script left off in case of interruptions.
-- **📝 Comprehensive Logging:** Logs detailed information about each follow action, successes, failures, and rate limit statuses to both the console and a log file.
-- **🔒 Secure Token Management:** Uses environment variables to handle GitHub Personal Access Tokens (PAT) securely, preventing accidental exposure.
-- **⚙️ Concurrency Control:** Limits the number of concurrent API requests to avoid triggering GitHub's abuse detection mechanisms.
+1. **Run on your local machine:** Ideal for testing and short-term usage.
 
-## 📦 Installation
+2. **Set up a Virtual Machine (VM) to run 24/7:** Recommended to maximize the effect by continuously running the bot without interruption.
+[Jump to Installation on local machine](#-installation-on-local-machine)
+
+
+## ⭐ New Features
+
+- **🤖 Automated User Scraping:** Transitioned from manual user lists to automated scraping using the GitHub API, eliminating the need for manual updates.
+- **💾 Automated State Management:** Introduced state management with `state.json` to persist progress and ensure smooth resumption after interruptions.
+- **🖥️ 24/7 VM Deployment:** Optimized for continuous operation on a virtual machine, allowing the bot to run around the clock without manual restarts.
+
+## 📁 File Descriptions
+
+- **`main.py`:** The entry point of the bot. It orchestrates the main flow, handles logging, and ensures continuous operation with a `while True` loop.
+- **`fetching_new_users.py`:** Fetches a specified number of new GitHub users based on criteria using the GitHub API.
+- **`state_manager.py`:** Manages the loading and saving of the bot's state, ensuring progress is saved and can be resumed.
+- **`state.json`:** A JSON file that stores information such as the last followed user and tracking counters for state persistence.
+
+## 🛠️ How It Works
+
+1. **Automated User Scraping:**
+   - The bot uses `fetching_new_users.py` to automatically fetch new GitHub users based on specified criteria.
+   - It leverages the GitHub API to retrieve users, removing the need for manual username lists.
+
+2. **State Management:**
+   - `state_manager.py` handles loading and saving the bot's state to `state.json`.
+   - This ensures that the bot can resume from where it left off in case of interruptions.
+
+3. **Continuous Operation:**
+   - `main.py` runs an infinite loop (`while True`) to keep the bot running continuously.
+   - Designed for deployment on a VM for 24/7 operation.
+
+
+## 📦 Installation on local machine
 
 ### 🛠️ Prerequisites
 
@@ -27,8 +54,8 @@
 1. **Clone the Repository:**
 
     ```sh
-    git clone https://github.com/OfficialCodeVoyage/GitHub_follow_by_username.git
-    cd GitHub_follow_by_username
+    git https://github.com/OfficialCodeVoyage/Github_Automation_Follower_Bot.git
+    cd Github_Automation_Follower_Bot
     ```
 
 2. **Set Up a Virtual Environment (Optional but Recommended):**
@@ -47,8 +74,9 @@
     It's recommended to use a `requirements.txt` file for managing dependencies. Ensure you have a `requirements.txt` file with the following content:
 
     ```plaintext
-    aiohttp
+    requests
     python-dotenv
+    ratelimit
     ```
 
     Then, install the dependencies:
@@ -66,9 +94,7 @@
 Create a `.env` file in the root directory of the project to securely store your GitHub PAT and other configurations.
 
 ```dotenv
-GITHUB_TOKEN=your_github_personal_access_token_here
-USERNAMES_FILE=usernames.txt
-LAST_LINE_FILE=last_line.txt
+GITHUB_TOKEN="your_github_personal_access_token_here"
 ```
 
 ### 2. 📄 Prepare the Usernames File
@@ -91,32 +117,6 @@ START_LINE=0# Change to the desired line number (0-indexed)
 ```
 📝 Note: The script automatically resumes from the last processed line by reading the last_line.txt file. Adjusting START_LINE can override this behavior if needed.
 
-## 🔍 Script Details
-
-### 📚 Modules and Dependencies
-
-- **`asyncio` & `aiohttp`:** For asynchronous HTTP requests to the GitHub API.
-- **`python-dotenv`:** For loading environment variables from the `.env` file.
-- **`logging`:** For comprehensive logging of the script's operations.
-- **`os` & `time`:** For environment variable management and handling rate limits.
-
-### 🔑 Key Functions
-
-- **`read_usernames(file_path: str) -> List[str]`:**  
-  Reads GitHub usernames from the specified file and returns them as a list.
-
-- **`follow_user(session: aiohttp.ClientSession, username: str) -> Tuple[int, str]`:**  
-  Sends a PUT request to the GitHub API to follow the specified user.
-
-- **`handle_rate_limit(headers: dict)`:**  
-  Checks the response headers for rate limit information and sleeps if the rate limit has been reached.
-
-- **`write_last_line(file_path: str, line_number: int) -> None`:**  
-  Writes the last processed line number to a file to enable resuming.
-
-- **`main()`:**  
-  Orchestrates reading usernames, following users asynchronously, handling rate limits, and logging.
-handling rate limits, and logging.
 
 ## 🤝 Contributing
 
