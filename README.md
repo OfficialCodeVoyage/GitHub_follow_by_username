@@ -7,11 +7,12 @@ The GitHub Automation Follower Bot is a fully automated tool designed to streaml
 You have two options to run the script:
 
 1. **Run on your local machine:** Ideal for testing and short-term usage.
+
 [Jump to Installation on local machine](#-installation-on-local-machine)
 
 3. **Set up a Virtual Machine (VM) to run 24/7:** Recommended to maximize the effect by continuously running the bot without interruption.
 
-[Go to Installation on VM](#-installation-on-virtual-machine)
+[Jump to Installation on VM](#-installation-on-virtual-machine)
 
 
 ## ⭐ New Features
