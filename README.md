@@ -10,7 +10,8 @@ You have two options to run the script:
 [Jump to Installation on local machine](#-installation-on-local-machine)
 
 3. **Set up a Virtual Machine (VM) to run 24/7:** Recommended to maximize the effect by continuously running the bot without interruption.
-[Go to Installation on VM](#-installation-on-virtual-machinevm)
+
+[Go to Installation on VM](#-installation-on-virtual-machine)
 
 
 ## ⭐ New Features
@@ -89,8 +90,8 @@ You have two options to run the script:
     **⚠️ Note:** Avoid installing standard library modules like `time` via `pip` as they are already included with Python.
 
 
-## 📦 Installation on Virtual Machine (VM)
-
+## 📦 Installation on Virtual Machine
+TBD - TBD 
 
 
 
